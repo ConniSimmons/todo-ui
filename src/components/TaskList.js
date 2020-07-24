@@ -2,6 +2,7 @@ import React from 'react';
 import Context from '../context';
 import {uuid} from '../helpers';
 import TaskForm from './TaskForm';
+import { Form } from 'react-bootstrap';
 
 Array.prototype.findById = function(id)
 {
@@ -41,7 +42,27 @@ export default class TaskList extends React.Component {
                 taskElements: this.state.tasks.map((task) =>
                 {
                     return (
-                    <li key={uuid()}><span>{task.name}</span> - <span>{task.description}</span><span>{task.due}</span>{this.statusBox(task)}</li>
+                        <div>
+                            <br />
+                            <br />                            
+                                <li key={uuid()}>
+                                    <span>{task.name}</span>:
+                                     <span>{task.description}</span>
+                                     <br />
+                                     <span>Due date: {task.due}
+                                     </span>
+                                     <br />
+                                     {this.statusBox(task)}
+                                     </li>
+                                    <button
+                                        className="deleteButton"
+                                        id={task._id} 
+                                        onClick={this.deleteList}>
+                                            Delete Task
+							        </button>
+                                    <br />
+                                    <br />
+                        </div>
                     )
                 })
             }, function()
@@ -51,9 +72,28 @@ export default class TaskList extends React.Component {
         })
 
     }
+    deleteTask = (event) => {
+		console.log('deleting...');
+		event.preventDefault();
+		let id = event.target.getAttribute('id');
+		console.log('id: ', id);
+		let fetchOptions = {
+			method: 'DELETE'
+		};
+		fetch(`http://localhost:5555/api/tasks/${id}`, fetchOptions)
+			.then((response) => {
+				return response.json();
+			})
+			.then((data) => {
+				console.log('response from api: ', data);
+				this.getTasks();
+			})
+			.catch();
+	};
     statusBox = (task) =>
     {
-        return (<input key={uuid()} id={task._id} type='checkbox' checked={(task.status === 'complete')} onChange={this.handleCheck} />)
+        
+        return (<Form.Check key={uuid()} id={task._id} type='checkbox' label="Task Complete" checked={(task.status === 'complete')} onChange={this.handleCheck} />)
     }
     handleCheck = (event) =>
     {
@@ -98,10 +138,12 @@ export default class TaskList extends React.Component {
         return (
             <section className="taskList">
                 <ul>
+                    <br />
+                <li key={uuid()}><TaskForm listId={this.props.listId} /></li>
                     {this.state.taskElements}
-                    <li key={uuid()}><TaskForm listId={this.props.listId} /></li>
+                    
                 </ul>
-
+               
             </section>
         )
     }

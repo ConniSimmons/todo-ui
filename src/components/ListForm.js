@@ -70,9 +70,12 @@ export default class ListForm extends React.Component {
 
 		return listTasks.map((item) => {
 			return (
+				<div>
 				<li key={item._id} id={item._id} onClick={this.updateTask}>
 					{item.name || 'Unknown'}
+					{item.description}
 				</li>
+				</div>
 			);
 		});
 	};

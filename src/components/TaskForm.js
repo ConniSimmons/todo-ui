@@ -55,7 +55,7 @@ export default class TaskForm extends React.Component {
 
 					<input name="description" value={this.state.description} onChange={this.changeHandler} placeholder='Description' />
 
-					<input name="due" value={this.state.due} onChange={this.changeHandler} placeholder='due' />
+					<input name="due" value={this.state.due} onChange={this.changeHandler} placeholder='Due Date' />
                     <input className="small" type="submit" value="Add Task" />
                 </div>
 			</form>

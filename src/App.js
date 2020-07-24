@@ -55,10 +55,14 @@ class App extends React.Component {
 							<div key={item._id}>
 								<li id={item._id} onClick={this.updateListDisplay}>
 									{item.name || 'Unknown'}
+									<br />
+									{item.description}
 								</li>
 								<button className="deleteButton" id={item._id} onClick={this.deleteList}>
-									X
+									Delete List
 								</button>
+								<br />
+								<br />
 							</div>
 						);
 					}),
