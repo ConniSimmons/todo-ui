@@ -3,6 +3,9 @@ import ListForm from './components/ListForm';
 import './App.css';
 import Context from './context';
 import { uuid } from './helpers';
+import Footer from './components/Footer';
+import Header from './components/Header';
+
 
 class App extends React.Component {
 	constructor() {
@@ -18,7 +21,7 @@ class App extends React.Component {
 			thingToDisplay: null,
 		};
 	}
-
+	
 	getTasks = async () => {
 		return await fetch('http://localhost:5555/api/tasks')
 			.then((response) => {
@@ -130,6 +133,8 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
+				
+				<Header />
 				<Context.Provider value={{ ...this.state, getLists: this.getLists, getTasks: this.getTasks }}>
 					<section className="controls">
 						<section className="buttons">
@@ -137,11 +142,13 @@ class App extends React.Component {
 						</section>
 						<section className="my-lists">
 							<h2>My Lists</h2>
+							<small>&nbsp;&nbsp;&nbsp;*click list for details*</small>
 							<ul>{this.state.listElements}</ul>
 						</section>
 					</section>
 					<section className="content"> {this.state.thingToDisplay}</section>
 				</Context.Provider>
+				<Footer />
 			</div>
 		);
 	}
