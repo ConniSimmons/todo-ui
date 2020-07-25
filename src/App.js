@@ -106,7 +106,7 @@ class App extends React.Component {
 			method: 'DELETE'
 		};
 		//fetch(`http://localhost:5555/api/lists/${id}`, fetchOptions)
-		fetch(`http://helio-todo-api.herokuapp.com/api/lists/${id}`, fetchOptions)
+		fetch(`https://helio-todo-api.herokuapp.com/api/lists/${id}`, fetchOptions)
 			.then((response) => {
 				return response.json();
 			})
