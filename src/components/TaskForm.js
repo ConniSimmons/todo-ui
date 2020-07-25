@@ -26,7 +26,8 @@ export default class TaskForm extends React.Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
         // and some other stuff
-        let route = `http://localhost:5555/api/tasks`;
+		//let route = `http://localhost:5555/api/tasks`;
+		let route = `https://helio-todo-api.herokuapp.com/api/tasks`;
         let options = {
             method: 'POST',
             headers: {

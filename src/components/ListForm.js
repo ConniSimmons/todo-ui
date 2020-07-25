@@ -21,7 +21,8 @@ export default class ListForm extends React.Component {
 		event.preventDefault();
 		console.log('first state: ', this.state);
 		// and some other stuff
-		let route = 'http://localhost:5555/api/lists';
+		//let route = 'http://localhost:5555/api/lists';
+		let route = 'https://helio-todo-api.herokuapp.com/api/lists';
 		// we need the _id in state to make stuff work but we don't actually want to submit it
 		let submitData = { ...this.state };
 		delete submitData._id;

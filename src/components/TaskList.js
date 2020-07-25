@@ -80,7 +80,8 @@ export default class TaskList extends React.Component {
 		let fetchOptions = {
 			method: 'DELETE'
 		};
-		fetch(`http://localhost:5555/api/tasks/${id}`, fetchOptions)
+        //fetch(`http://localhost:5555/api/tasks/${id}`, 
+        fetch(`https://helio-todo-api.herokuapp.com/api/tasks/${id}`, fetchOptions)
 			.then((response) => {
 				return response.json();
 			})
@@ -107,7 +108,8 @@ export default class TaskList extends React.Component {
             },
             body: JSON.stringify({status: task.status === 'complete' ? 'pending' : 'complete' })
         }
-        fetch(`http://localhost:5555/api/tasks/${taskId}`, fetchOptions)
+        //fetch(`http://localhost:5555/api/tasks/${taskId}`, fetchOptions)
+        fetch(`https://helio-todo-api.herokuapp.com/api/tasks/${taskId}`, fetchOptions)
         .then((response) => { return response.json()})
         .then((data) =>
         {

@@ -23,7 +23,8 @@ class App extends React.Component {
 	}
 	
 	getTasks = async () => {
-		return await fetch('http://localhost:5555/api/tasks')
+		//return await fetch('http://localhost:5555/api/tasks')
+		return await fetch('https://helio-todo-api.herokuapp.com/api/tasks')
 			.then((response) => {
 				return response.json();
 			})
@@ -45,7 +46,8 @@ class App extends React.Component {
 	};
 
 	getLists = () => {
-		fetch('http://localhost:5555/api/lists')
+		//fetch('http://localhost:5555/api/lists')
+		fetch('http://helio-todo-api.herokuapp.com/api/lists')
 			.then((response) => {
 				return response.json();
 			})
@@ -103,7 +105,8 @@ class App extends React.Component {
 		let fetchOptions = {
 			method: 'DELETE'
 		};
-		fetch(`http://localhost:5555/api/lists/${id}`, fetchOptions)
+		//fetch(`http://localhost:5555/api/lists/${id}`, fetchOptions)
+		fetch(`http://helio-todo-api.herokuapp.com/api/lists/${id}`, fetchOptions)
 			.then((response) => {
 				return response.json();
 			})
