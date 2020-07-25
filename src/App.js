@@ -47,7 +47,7 @@ class App extends React.Component {
 
 	getLists = () => {
 		//fetch('http://localhost:5555/api/lists')
-		fetch('http://helio-todo-api.herokuapp.com/api/lists')
+		fetch('https://helio-todo-api.herokuapp.com/api/lists')
 			.then((response) => {
 				return response.json();
 			})
